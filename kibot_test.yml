@@ -1,0 +1,26 @@
+kibot:
+  version: 1
+
+preflight:
+  check_zone_fills: true
+  erc:
+    filters:
+    - filter: 'ignore simulation errors'
+      error: 'simulation_model_issue'
+  drc:
+    filters:
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(66\.752 mm, 98\.509672 mm\): Track \[Net-\(AE1-FEED\)\] on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(67\.752 mm, 98\.5097 mm\): Track \(arc\) \[Net-\(AE1-FEED\)\] on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(64\.912 mm, 98\.662 mm\): Track \[GND\] on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(66\.752 mm, 98\.792 mm\): Pad 1 \[Net-\(AE1-FEED\)\] of AE1 on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(64\.652 mm, 98\.792 mm\): PTH pad 2 \[GND\] of AE1'

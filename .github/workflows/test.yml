@@ -1,0 +1,18 @@
+name: Kibot ERC/DRC
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - uses: INTI-CMNB/KiBot@v2_k8
+      with:
+        config: kibot_test.yml
+        schema: 'kicad/riotee-module.kicad_sch'
+        board: 'kicad/riotee-module.kicad_pcb'

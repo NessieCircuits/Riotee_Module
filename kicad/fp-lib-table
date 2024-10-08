@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name "Riotee")(type "KiCad")(uri "${KIPRJMOD}/Riotee.pretty")(options "")(descr ""))
+  (lib (name "kikit")(type "KiCad")(uri "${KIPRJMOD}/kikit.pretty")(options "")(descr ""))
+)

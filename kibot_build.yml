@@ -1,0 +1,207 @@
+kibot:
+  version: 1
+
+preflight:
+  check_zone_fills: true
+  erc:
+    filters:
+    - filter: 'ignore simulation errors'
+      error: 'simulation_model_issue'
+  drc:
+    filters:
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(66\.752 mm, 98\.509672 mm\): Track \[Net-\(AE1-FEED\)\] on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(67\.752 mm, 98\.5097 mm\): Track \(arc\) \[Net-\(AE1-FEED\)\] on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(64\.912 mm, 98\.662 mm\): Track \[GND\] on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(66\.752 mm, 98\.792 mm\): Pad 1 \[Net-\(AE1-FEED\)\] of AE1 on F\.Cu'
+    - filter: 'ignore pcb antenna issues'
+      error: 'clearance'
+      regex: '\(64\.652 mm, 98\.792 mm\): PTH pad 2 \[GND\] of AE1'
+outputs:
+  # PDF Schematic Print (Portable Document Format):
+  # This is the main format to document your schematic.
+  # This output is what you get from the 'File/Print' menu in eeschema.
+  - name: 'pdf_sch_print'
+    comment: 'Exports schematics to PDF'
+    type: 'pdf_sch_print'
+    dir: '.'
+    options:
+      # [string='%f-%i%I%v.%x'] Filename for the output PDF (%i=schematic, %x=pdf). Affected by global options
+      output: 'schematics.%x'
+
+  - name: 'pcb_print'
+    comment: 'Prints the PCB'
+    type: 'pcb_print'
+    dir: '.'
+    options:
+      # [number=0] Default horizontal margin used for the autoscaling mode [mm]
+      autoscale_margin_x: 25
+      # [number=0] Default vertical margin used for the autoscaling mode [mm]
+      autoscale_margin_y: 25
+      # [boolean=false] Add the `Edge.Cuts` to all the pages
+      force_edge_cuts: true
+      # [string='PDF'] [PDF,SVG,PNG,EPS,PS] Format for the output file/s.
+      # Note that for PS you need `ghostscript` which isn't part of the default docker images
+      format: 'PDF'
+      # [string='%f-%i%I%v.%x'] Filename for the output (%i=assembly, %x=pdf/ps)/(%i=assembly_page_NN, %x=svg/png/eps).
+      # Consult the `page_number_as_extension` and `page_id` options. Affected by global options
+      output: 'pcb.%x'
+      # [list(dict)] List of pages to include in the output document.
+      # Each page contains one or more layers of the PCB
+      pages:
+        # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 5.0
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'F.Cu'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Top Copper'
+        # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'B.Cu'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Bottom Copper'
+        # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'sig1.Cu'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Inner1 Copper'
+        # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'gnd.Cu'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Inner2 Copper'
+        # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'F.Mask'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Top Solder Mask'
+          # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'B.Mask'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Bottom Solder Mask'
+          # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'B.Silkscreen'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Bottom Silkscreen'
+          # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 4.3
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'F.Paste'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Top Stencil'
+      # [number=1280] [0,7680] Width of the PNG in pixels. Use 0 to use as many pixels as the DPI needs for the page size
+      png_width: 1280
+      # [number=1.0] Default scale factor (0 means autoscaling)
+      scaling: 1.0
+
+  - name: 'assembly_print'
+    comment: 'Prints the assembly plan'
+    type: 'pcb_print'
+    dir: '.'
+    options:
+      # [number=0] Default horizontal margin used for the autoscaling mode [mm]
+      autoscale_margin_x: 15
+      # [number=0] Default vertical margin used for the autoscaling mode [mm]
+      autoscale_margin_y: 25
+      # [boolean=false] Add the `Edge.Cuts` to all the pages
+      force_edge_cuts: true
+      # [string='PDF'] [PDF,SVG,PNG,EPS,PS] Format for the output file/s.
+      # Note that for PS you need `ghostscript` which isn't part of the default docker images
+      format: 'PDF'
+      # [string='%f-%i%I%v.%x'] Filename for the output (%i=assembly, %x=pdf/ps)/(%i=assembly_page_NN, %x=svg/png/eps).
+      # Consult the `page_number_as_extension` and `page_id` options. Affected by global options
+      output: 'assembly.%x'
+      # [list(dict)] List of pages to include in the output document.
+      # Each page contains one or more layers of the PCB
+      pages:
+        # [number=1.0] Scale factor (0 means autoscaling)
+        - scaling: 0
+          # [list(dict)|list(string)|string] List of layers printed in this page.
+          # Order is important, the last goes on top.
+          # You can reuse other layers lists, some options aren't used here, but they are valid
+          layers:
+            - 'F.Fab'
+          # [string='Assembly'] Text to use for the `sheet` in the title block
+          sheet: 'Assembly'
+      # [boolean=true] Include the title-block (worksheet, frame, etc.)
+      plot_sheet_reference: false
+      # [number=1280] [0,7680] Width of the PNG in pixels. Use 0 to use as many pixels as the DPI needs for the page size
+      png_width: 1280
+      # [number=1.0] Default scale factor (0 means autoscaling)
+      scaling: 0
+
+  - name: 'render 3D image'
+    comment: "Exports the image generated by KiCad's 3D viewer."
+    type: 'render_3d'
+    dir: '.'
+    options:
+      # [boolean=false] When enabled the image will be post-processed to remove the empty space around the image.
+      # In this mode the `background2` is changed to be the same as `background1`
+      auto_crop: true
+      # [string='#66667F'] First color for the background gradient
+      background1: '#FFFFFF'
+      # [string='#CCCCE5'] Second color for the background gradient
+      background2: '#FFFFFF'
+      # [string='#332B16'] Color for the board without copper or solder mask
+      board: '#332B17E6'
+      # [string='#8b898c'] Color for the copper
+      copper: '#B39C00FF'
+      # [number=720] Image height (aprox.)
+      height: 1440
+      # [boolean=false] Enable the orthographic projection mode (top view looks flat)
+      orthographic: true
+      # [string='%f-%i%I%v.%x'] Name for the generated image file (%i='3D_$VIEW' %x='png'). Affected by global options
+      output: '3drendering.%x'
+      # [string='#d5dce4'] Color for the silk screen
+      silk: '#E6E6E6FF'
+      # [string='#208b47'] Color for the solder mask
+      solder_mask: '#143324D4'
+      # [string='#808080'] Color for the solder paste
+      solder_paste: '#808080FF'
+      # [boolean=false] When enabled the image will be post-processed to make the background transparent.
+      # In this mode the `background1` and `background2` colors are ignored
+      transparent_background: true
+      # [number=1280] Image width (aprox.)
+      width: 2560
+      # [number=0] Zoom steps. Use positive to enlarge, get closer, and negative to reduce.
+      # Same result as using the mouse wheel in the 3D viewer
+      zoom: 0

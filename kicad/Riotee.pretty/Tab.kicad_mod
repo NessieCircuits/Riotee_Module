@@ -1,0 +1,118 @@
+(footprint "Tab"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "A symbol representing annotation for tab placement")
+	(property "Reference" "REF**"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "7c98af8a-da18-402b-824d-b6899ce84423")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Tab"
+		(at -2.75 -1 0)
+		(layer "Dwgs.User")
+		(uuid "00caf05a-22c6-4bc8-961e-7c26492a657b")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.2)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f61f9120-b367-40fa-96b8-2bb1c13cf00e")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "235448da-6112-4ba2-8d88-d01091b88e59")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3d76dc52-11ac-41db-b62a-430f88b3819d")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr exclude_from_pos_files exclude_from_bom)
+	(fp_line
+		(start 0.25 0)
+		(end -2.75 0)
+		(stroke
+			(width 0.3)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "b35e2981-dce6-4ed5-ba3b-1c00b20ebb01")
+	)
+	(fp_line
+		(start 0.25 0)
+		(end -0.75 -1)
+		(stroke
+			(width 0.3)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "e14c1652-276d-44e7-9b5a-5d4d6bf07063")
+	)
+	(fp_line
+		(start 0.25 0)
+		(end -0.75 1)
+		(stroke
+			(width 0.3)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "29c16b74-8be6-4500-8983-a9b871aa3b66")
+	)
+	(fp_line
+		(start 0.25 1)
+		(end 0.25 -1)
+		(stroke
+			(width 0.3)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "0ebc53a1-4258-4d32-8b55-66bcfa814538")
+	)
+	(fp_text user "KIKIT: width: 3mm"
+		(at -5.5 0 90)
+		(layer "Dwgs.User")
+		(uuid "078e67ae-4de1-4123-aba8-18b18343249d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+)
