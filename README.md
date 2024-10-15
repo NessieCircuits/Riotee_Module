@@ -13,6 +13,8 @@ Latest design files:
  - [Schematics](https://www.riotee.nessie-circuits.de/artifacts/module/latest/schematics.pdf)
  - [Layout](https://www.riotee.nessie-circuits.de/artifacts/module/latest/pcb.pdf)
  - [3D rendering](https://www.riotee.nessie-circuits.de/artifacts/module/latest/3drendering.png)
+ - [Gerber](https://www.riotee.nessie-circuits.de/artifacts/module/latest/gerber.zip)
+ - [BOM](https://www.riotee.nessie-circuits.de/artifacts/module/latest/bom.csv)
  - [3D step model](./resources/RioteeModule.step)
  - [Kicad schematic symbol](./resources/RioteeModule.kicad_sym)
  - [Kicad footprint](./resources/RioteeModule.pretty)
